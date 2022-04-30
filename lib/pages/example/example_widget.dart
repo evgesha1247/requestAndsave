@@ -7,44 +7,53 @@ class ExampleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            ButtonWidget(),
-            Expanded(child: ListWidget()),
-          ],
-        ),
+      body: Column(
+        children: const [
+          ExampleButtonWidget(),
+          Expanded(child: ExampleListWidget()),
+        ],
       ),
     );
   }
 }
 
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({Key? key}) : super(key: key);
+class ExampleButtonWidget extends StatelessWidget {
+  const ExampleButtonWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        onPressed: () => context.read<ExampleWidgetModel>().reload(),
+        onPressed: () => context.read<ExampleWidgetModel>().getBoxPosts(),
         child: const Text('data'),
       ),
     );
   }
 }
 
-class ListWidget extends StatelessWidget {
-  const ListWidget({Key? key}) : super(key: key);
+class ExampleListWidget extends StatelessWidget {
+  const ExampleListWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final posts = context.watch<ExampleWidgetModel>().post;
-    return ListView.builder(
+    return ListView.separated(
       itemCount: posts.length,
       itemBuilder: (BuildContext context, int index) {
-        return Text(
-          posts[index].title,
+        return ExampleRowWidget(
+          index: index,
         );
       },
+      separatorBuilder: (BuildContext context, int index) =>
+          const SizedBox(height: 10),
     );
+  }
+}
+
+class ExampleRowWidget extends StatelessWidget {
+  const ExampleRowWidget({Key? key, required this.index}) : super(key: key);
+  final int index;
+  @override
+  Widget build(BuildContext context) {
+    final posts = context.watch<ExampleWidgetModel>().post;
+    return Text(posts[index].body);
   }
 }
