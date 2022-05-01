@@ -10,7 +10,7 @@ class ExampleWidget extends StatelessWidget {
       body: Column(
         children: const [
           ExampleButtonWidget(),
-          Expanded(child: ExampleListWidget()),
+          Expanded(child: ExampleListWidget())
         ],
       ),
     );
@@ -23,7 +23,7 @@ class ExampleButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        onPressed: () => context.read<ExampleWidgetModel>().getBoxPosts(),
+        onPressed: () => context.read<ExampleWidgetModel>().reload(),
         child: const Text('data'),
       ),
     );
@@ -54,6 +54,6 @@ class ExampleRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final posts = context.watch<ExampleWidgetModel>().post;
-    return Text(posts[index].body);
+    return Text(posts[index].id.toString());
   }
 }

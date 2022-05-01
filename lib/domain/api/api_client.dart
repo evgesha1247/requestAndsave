@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_hive_json/domain/entity/post.dart';
-import 'package:http/http.dart' as http;
 
 class ApiClient {
   final client = HttpClient();
