@@ -15,5 +15,5 @@ class Post {
     required this.body,
   });
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
-  Map<String, dynamic> toJson(Post pos) => _$PostToJson(this);
+  Map<String, dynamic> toJson() => _$PostToJson(this);
 }

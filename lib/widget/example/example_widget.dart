@@ -21,7 +21,7 @@ class _ExampleListWidget extends StatelessWidget {
   const _ExampleListWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final value = context.watch<ExampleWidgetModel>().getStaty;
+    final value = context.watch<ExampleWidgetModel>().staty;
     return ListView.separated(
       itemCount: value.posts.length,
       itemBuilder: (BuildContext context, int index) {
@@ -40,7 +40,7 @@ class _ExampleRowWidget extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final value = context.watch<ExampleWidgetModel>().getStaty;
+    final value = context.watch<ExampleWidgetModel>().staty;
     return Center(child: Text(value.posts[index].title));
   }
 }
@@ -54,7 +54,7 @@ class _ExampleButtonWidget extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () => context.read<ExampleWidgetModel>().loadValue(),
+          onPressed: () => context.read<ExampleWidgetModel>().getStaty(),
           child: const Text('data'),
         ),
       ),

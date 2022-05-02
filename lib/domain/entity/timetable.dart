@@ -10,7 +10,6 @@ class Timetable {
     return Timetable(posts: posts ?? this.posts);
   }
 
-  factory Timetable.fromJson(Map<String, dynamic> json) =>
-      _$TimetableFromJson(json);
+  factory Timetable.fromJson(json) => _$TimetableFromJson(json);
   Map<String, dynamic> toJson() => _$TimetableToJson(this);
 }
