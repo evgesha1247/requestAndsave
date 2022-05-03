@@ -54,7 +54,7 @@ class _ExampleButtonWidget extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () => context.read<ExampleWidgetModel>().getStaty(),
+          onPressed: () => context.read<ExampleWidgetModel>().getValue(),
           child: const Text('data'),
         ),
       ),

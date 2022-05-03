@@ -12,18 +12,9 @@ class ExampleWidgetModel extends ChangeNotifier {
   var _staty = ExampleWidgetModelState(posts: []);
   ExampleWidgetModelState get staty => _staty;
 
-  Future<void> _load() async {
-    await _timetableService.loadValue();
+  Future<void> getValue() async {
+    await _timetableService.initValue();
     _upDateState();
-  }
-
-  Future<void> getStaty() async {
-    await _timetableService.getValue();
-    _upDateState();
-  }
-
-  ExampleWidgetModel() {
-    _load();
   }
 
   void _upDateState() {
