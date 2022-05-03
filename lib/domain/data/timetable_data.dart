@@ -1,6 +1,5 @@
 import 'package:flutter_hive_json/domain/api/api_client.dart';
 import 'package:flutter_hive_json/domain/entity/post.dart';
-import 'package:http/http.dart';
 
 class TimetableData {
   ApiClient apiClient = ApiClient();
