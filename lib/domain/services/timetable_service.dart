@@ -5,6 +5,7 @@ class TimetableService {
   final _timetableData = TimetableData();
   Timetable _timetable = Timetable(posts: []);
   get timetable => _timetable;
+
   Future<void> initValue() async {
     //  будет решаться откуда брать
     //  из сети или локального
@@ -13,10 +14,11 @@ class TimetableService {
   }
 
   Future<void> getValueFromNetwork() async {
-    _timetable = _timetable.copyWith(posts: await _timetableData.loadData());
+    _timetable =
+        _timetable.copyWith(posts: await _timetableData.loadPostData());
   }
 
   Future<void> getValueFromStorage() async {
-    _timetable = _timetable.copyWith(posts: await _timetableData.getData());
+    _timetable = _timetable.copyWith(posts: await _timetableData.getPostData());
   }
 }

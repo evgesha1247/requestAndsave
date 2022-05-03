@@ -11,6 +11,8 @@ class ExampleWidget extends StatelessWidget {
         children: const [
           Expanded(child: _ExampleListWidget()),
           _ExampleButtonWidget(),
+          _ExampleButton2Widget(),
+          _ExampleButton3Widget(),
         ],
       ),
     );
@@ -41,7 +43,7 @@ class _ExampleRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = context.watch<ExampleWidgetModel>().staty;
-    return Center(child: Text(value.posts[index].title));
+    return Center(child: Text(value.posts[index].email));
   }
 }
 
@@ -54,7 +56,43 @@ class _ExampleButtonWidget extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () => context.read<ExampleWidgetModel>().getValue(),
+          onPressed: () => context
+              .read<ExampleWidgetModel>()
+              .saveNameGroup('qweqweqweqweqewqeq'),
+          child: const Text('data'),
+        ),
+      ),
+    );
+  }
+}
+
+class _ExampleButton2Widget extends StatelessWidget {
+  const _ExampleButton2Widget({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: () => context.read<ExampleWidgetModel>().removeNameGroup(),
+          child: const Text('data'),
+        ),
+      ),
+    );
+  }
+}
+
+class _ExampleButton3Widget extends StatelessWidget {
+  const _ExampleButton3Widget({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: () => context.read<ExampleWidgetModel>().getIsAuth(),
           child: const Text('data'),
         ),
       ),

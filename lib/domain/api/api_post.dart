@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_hive_json/domain/entity/post.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class ApiClient {
-  final shared = SharedPreferences.getInstance();
+class ApiPost {
   Future<List<Post>> getPostsFormNetwork() async {
     final client = HttpClient();
-    final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+    final url =
+        Uri.parse('https://jsonplaceholder.typicode.com/comments?postId=1');
     final request = await client.getUrl(url);
     final response = await request.close();
     if (response.statusCode == 200) {

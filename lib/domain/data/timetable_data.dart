@@ -1,11 +1,9 @@
-import 'package:flutter_hive_json/domain/api/api_client.dart';
-import 'package:flutter_hive_json/domain/entity/post.dart';
+import 'package:flutter_hive_json/domain/api/api_post.dart';
 
 class TimetableData {
-  ApiClient apiClient = ApiClient();
+  ApiPost apiPost = ApiPost();
 
-  Future loadData() async => await apiClient.getPostsFormNetwork();
-  Future getData() async =>
-      [Post(userId: 1, id: 1, title: 'title', body: 'body')];
+  Future loadPostData() async => await apiPost.getPostsFormNetwork();
+  Future getPostData() async => [];
   Future<void> saveData() async {}
 }
