@@ -10,7 +10,8 @@ class ExampleWidget extends StatelessWidget {
       body: Column(
         children: const [
           Expanded(child: _ExampleListWidget()),
-          _ExampleButtonWidget(),
+          _ExampleButtonGetWidget(),
+          _ExampleButtonLoadWidget(),
         ],
       ),
     );
@@ -23,7 +24,7 @@ class _ExampleListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final value = context.watch<ExampleWidgetModel>().staty;
     return ListView.separated(
-      itemCount: value.posts.length,
+      itemCount: value.lessons.length,
       itemBuilder: (BuildContext context, int index) {
         return _ExampleRowWidget(
           index: index,
@@ -40,13 +41,13 @@ class _ExampleRowWidget extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    final value = context.watch<ExampleWidgetModel>().staty;
-    return Center(child: Text(value.posts[index].title));
+    final value = context.read<ExampleWidgetModel>().staty;
+    return Center(child: Text(value.lessons[index].title));
   }
 }
 
-class _ExampleButtonWidget extends StatelessWidget {
-  const _ExampleButtonWidget({Key? key}) : super(key: key);
+class _ExampleButtonGetWidget extends StatelessWidget {
+  const _ExampleButtonGetWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,8 +55,26 @@ class _ExampleButtonWidget extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () => context.read<ExampleWidgetModel>().getStaty(),
-          child: const Text('data'),
+          onPressed: () => {},
+          //   context.read<ExampleWidgetModel>().getStaty('timetable'),
+          child: const Text('getStaty'),
+        ),
+      ),
+    );
+  }
+}
+
+class _ExampleButtonLoadWidget extends StatelessWidget {
+  const _ExampleButtonLoadWidget({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          onPressed: () => {}, // context.read<ExampleWidgetModel>().load(),
+          child: const Text('load'),
         ),
       ),
     );

@@ -1,15 +1,18 @@
-import 'package:flutter_hive_json/domain/entity/post.dart';
+import 'package:flutter_hive_json/domain/entity/less.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'timetable.g.dart';
 
-@JsonSerializable()
-class Timetable {
-  final List<Post> posts;
-  Timetable({required this.posts});
-  Timetable copyWith({List<Post>? posts}) {
-    return Timetable(posts: posts ?? this.posts);
-  }
+//@JsonSerializable()
+@HiveType(typeId: 0)
+class Timetable extends HiveObject {
+  // @HiveField(0)
+  // List<Post> posts;
+  @HiveField(1)
+  HiveList<Less> lessons;
+  Timetable(this.lessons);
 
-  factory Timetable.fromJson(json) => _$TimetableFromJson(json);
-  Map<String, dynamic> toJson() => _$TimetableToJson(this);
+  //factory Timetable.fromJson(json) => _$TimetableFromJson(json);
+  // Map<String, dynamic> toJson() => _$TimetableToJson(this);
 }

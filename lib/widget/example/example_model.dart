@@ -1,34 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_hive_json/domain/entity/post.dart';
+import 'package:flutter_hive_json/domain/entity/less.dart';
 import 'package:flutter_hive_json/domain/services/timetable_service.dart';
 
 class ExampleWidgetModelState {
-  final List<Post> posts;
-  ExampleWidgetModelState({required this.posts});
+  final List<Less> lessons;
+  ExampleWidgetModelState({required this.lessons});
 }
 
 class ExampleWidgetModel extends ChangeNotifier {
   final TimetableService _timetableService = TimetableService();
-  var _staty = ExampleWidgetModelState(posts: []);
+  var _staty = ExampleWidgetModelState(lessons: []);
   ExampleWidgetModelState get staty => _staty;
-
-  Future<void> _load() async {
-    await _timetableService.loadValue();
-    _upDateState();
-  }
-
-  Future<void> getStaty() async {
-    await _timetableService.getValue();
-    _upDateState();
-  }
-
-  ExampleWidgetModel() {
-    _load();
-  }
-
-  void _upDateState() {
-    final timetable = _timetableService.timetable;
-    _staty = ExampleWidgetModelState(posts: timetable.posts);
-    notifyListeners();
-  }
 }
