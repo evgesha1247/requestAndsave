@@ -54,8 +54,9 @@ class _AuthButtonWidget extends StatelessWidget {
         : null;
     final childWidget = buttonState == AuthWidgetModelButtonState.isAuthProcess
         ? const CircularProgressIndicator()
-        : const Text('data');
-    return ElevatedButton(onPressed: onPres, child: childWidget);
+        : const Text('посмотреть расписание');
+    return ElevatedButton(
+        onPressed: () => onPres?.call(context), child: childWidget);
   }
 }
 

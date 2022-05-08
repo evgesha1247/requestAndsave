@@ -7,9 +7,7 @@ class TimetableService {
   get timetable => _timetable;
 
   Future<void> initValue() async {
-    //  будет решаться откуда брать
-    //  из сети или локального
-    //  хранилище
+    //  будет решаться откуда брать из сети или локального хранилище
     1 + 1 == 2 ? await getValueFromNetwork() : await getValueFromStorage();
   }
 

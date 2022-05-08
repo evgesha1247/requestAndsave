@@ -6,12 +6,23 @@ class ExampleWidget extends StatelessWidget {
   const ExampleWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final model = context.read<ExampleWidgetModel>();
     return Scaffold(
-      body: Column(
-        children: const [
-          Expanded(child: _ExampleListWidget()),
-          _ExampleButtonLoadWidget(),
+      appBar: AppBar(
+        actions: [
+          ElevatedButton(
+            onPressed: () => model.logout(context),
+            child: const Text('выход'),
+          ),
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: const [
+            Expanded(child: _ExampleListWidget()),
+          ],
+        ),
       ),
     );
   }
@@ -41,23 +52,6 @@ class _ExampleRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = context.read<ExampleWidgetModel>().staty;
-    return Center(child: Text(value.posts[index].name));
-  }
-}
-
-class _ExampleButtonLoadWidget extends StatelessWidget {
-  const _ExampleButtonLoadWidget({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          onPressed: () => context.read<ExampleWidgetModel>().getValue(),
-          child: const Text('load'),
-        ),
-      ),
-    );
+    return Center(child: Text(value.posts[index].email));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hive_json/domain/services/session_services.dart';
+import 'package:flutter_hive_json/navigations.dart/navigatin_widget.dart';
 
 enum AuthWidgetModelButtonState { canSubmit, isAuthProcess, disable }
 
@@ -27,15 +28,18 @@ class AuhtWidgetModel extends ChangeNotifier {
 
   void setNameGroup(String name) {
     if (_state.name == name) return;
+    _state.error = '';
     _state.name = name;
     notifyListeners();
   }
 
-  Future<void> buttonOnPressed() async {
+  Future<void> buttonOnPressed(BuildContext context) async {
     try {
       await _sessionServices.login(_state.name);
       _state.error = '';
       _state.isAuthInProcess = true;
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          MainNavigationRouteName.load, (route) => false);
       notifyListeners();
     } on SessionIncorectNameGroupError {
       _state.error = 'не верна указанна группу';

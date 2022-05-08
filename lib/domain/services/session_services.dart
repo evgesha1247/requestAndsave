@@ -1,7 +1,5 @@
 import 'package:flutter_hive_json/domain/data/session_data.dart';
 
-abstract class SessionError {}
-
 class SessionIncorectNameGroupError {}
 
 class SessionServices {
@@ -12,7 +10,7 @@ class SessionServices {
   }
 
   Future<void> login(String group) async {
-    final isSuccess = group.length == 8;
+    final isSuccess = group.length > 4;
     if (isSuccess) {
       await _sessionData.saveApiKey(group);
     } else {

@@ -5,8 +5,7 @@ import 'package:flutter_hive_json/domain/entity/post.dart';
 class ApiPost {
   Future<List<Post>> getPostsFormNetwork() async {
     final client = HttpClient();
-    final url =
-        Uri.parse('https://jsonplaceholder.typicode.com/comments?postId=1');
+    final url = Uri.parse('https://jsonplaceholder.typicode.com/comments');
     final request = await client.getUrl(url);
     final response = await request.close();
     if (response.statusCode == 200) {
