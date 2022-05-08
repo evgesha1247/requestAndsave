@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_hive_json/domain/entity/post.dart';
 import 'package:flutter_hive_json/domain/services/session_services.dart';
 import 'package:flutter_hive_json/domain/services/timetable_service.dart';
-import 'package:flutter_hive_json/navigations.dart/navigatin_widget.dart';
+import 'package:flutter_hive_json/ui/navigations.dart/navigatin_widget.dart';
 
 class ExampleWidgetModelState {
   final List<Post> posts;
@@ -19,8 +19,9 @@ class ExampleWidgetModel extends ChangeNotifier {
     getValue();
   }
   Future<void> logout(BuildContext context) async {
+    final navigator = Navigator.of(context);
     await _sessionServices.logout();
-    Navigator.of(context).pushNamedAndRemoveUntil(
+    navigator.pushNamedAndRemoveUntil(
         MainNavigationRouteName.load, (route) => false);
   }
 

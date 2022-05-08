@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hive_json/domain/services/session_services.dart';
-import 'package:flutter_hive_json/navigations.dart/navigatin_widget.dart';
+import 'package:flutter_hive_json/ui/navigations.dart/navigatin_widget.dart';
 
 class LoadWidgetModel {
   final SessionServices _sessionServices = SessionServices();

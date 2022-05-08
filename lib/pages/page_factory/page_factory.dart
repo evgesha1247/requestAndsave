@@ -3,8 +3,8 @@ import 'package:flutter_hive_json/pages/page_auth/auth.dart';
 import 'package:flutter_hive_json/pages/page_auth/auth_model.dart';
 import 'package:flutter_hive_json/pages/page_load/load.dart';
 import 'package:flutter_hive_json/pages/page_load/load_model.dart';
-import 'package:flutter_hive_json/widget/example/example.dart';
-import 'package:flutter_hive_json/widget/example/example_model.dart';
+import 'package:flutter_hive_json/ui/widget/example/example.dart';
+import 'package:flutter_hive_json/ui/widget/example/example_model.dart';
 import 'package:provider/provider.dart';
 
 class PageFactory {
